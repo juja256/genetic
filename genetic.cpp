@@ -144,7 +144,7 @@ void EightAlleleGenomeCreaturePopulation::processEpoch2() {
 
 void EightAlleleGenomeCreaturePopulation::run(int epochs) {
     for (int i=0; i<epochs; i++) {
-        this->processEpoch2();
+        this->processEpoch();
         for (int j=0; j<size; j++)
             std::cout << this->population[j].getFitness() << ":" << (int)(this->population[j].genome) << " ";
         std::cout << "\n";

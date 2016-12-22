@@ -17,11 +17,17 @@ double f3(u8 a) {
     return sin(M_PI*x/256);
 }
 
-double (*fitness_func_default)(u8) = &f2;
+double (*fitness_func_default)(u8) = &f;
 
 int main() {
-    EightAlleleGenomeCreaturePopulation life(20);
-    life.run(1000);
+    EightAlleleGenomeCreaturePopulation life(70);
+    EightAlleleGenomeCreature* creatures = life.getCurrentPopulation();
+    std::cout << "Initial population:\n";
+    for (int i=0; i<70; i++) {
+        std::cout << (int)creatures[i].getGenome() << ":" << creatures[i].getFitness() << " ";
+    }
+    std::cout << "\n";
+    life.run(100);
     std::cout << "Creature with the best fitness has genome: " << (int)(life.getMaxFitnessCreature().getGenome());
     return 0;
 }
